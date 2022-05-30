@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 public class MovieService {
 
@@ -21,5 +23,13 @@ public class MovieService {
 
     public Page<Movie> findAll(Pageable pageable){
         return movieRepository.findAll(pageable);
+    }
+
+    public Optional<Movie> getById(Long id) {
+        return movieRepository.findById(id);
+    }
+
+    public void deleteMovie(Movie movie){
+        movieRepository.delete(movie);
     }
 }
